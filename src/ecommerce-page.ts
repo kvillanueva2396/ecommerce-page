@@ -1,4 +1,4 @@
-import { LitElement, html } from 'lit'
+import { LitElement, css, html } from 'lit'
 import { EcommerceHeader } from '@/components/header/EcommerceHeader'
 import { ProductDm } from './components/dm/produt-dm/productDm'
 

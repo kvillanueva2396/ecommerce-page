@@ -2,9 +2,7 @@ import { LitElement, html, css } from 'lit'
 import { EcommerceMobileMenu } from './EcommerceMobileMenu.ts'
 
 export class EcommerceHeader extends LitElement {
-	// @property({ type: Boolean })
-	// _isMobileMenuOpen = false
-	_isMobileMenuOpen = false
+	_isMobileMenuOpen: boolean
 
 	static get properties() {
 		return {
@@ -23,11 +21,6 @@ export class EcommerceHeader extends LitElement {
 			justify-content: space-between;
 			padding: 1rem 1.5rem;
 			position: relative;
-		}
-		.ecommerce-header__menu {
-			cursor: pointer;
-			background: none;
-			border: none;
 		}
 		.ecommerce-header-left {
 			display: flex;
@@ -52,16 +45,17 @@ export class EcommerceHeader extends LitElement {
 		this._isMobileMenuOpen = !this._isMobileMenuOpen
 	}
 
+	_handleMenuButtonClose(event: CustomEvent) {
+		this._isMobileMenuOpen = event.detail.isOpen
+	}
+
 	render() {
 		return html`
 			<header class="ecommerce-header">
 				<div class="ecommerce-header-left">
-					<button class="ecommerce-header__menu" @click=${this._handleMenuClick}>
-						<img src="/icon-menu.svg" alt="icon" />
-					</button>
+					<ecommerce-mobile-menu></ecommerce-mobile-menu>
 					<img src="/logo.svg" alt="logo" class="ecommerce-header-logo" />
 				</div>
-				<ecommerce-mobile-menu ?is-open=${this._isMobileMenuOpen}></ecommerce-mobile-menu>
 				<div class="ecommerce-header-right">
 					<img src="/icon-cart.svg" alt="icon cart" />
 					<img src="/image-avatar.png" alt="avatar" class="ecommerce-header__avatar" />
