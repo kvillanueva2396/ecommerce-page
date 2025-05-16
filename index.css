@@ -11,6 +11,7 @@
 	--black-opacity: hsl(0, 0%, 75%);
 	--font-size-paragraph: 16px;
 	--font-family-primary: 'Kumbh Sans', sans-serif;
+	--separator-margin: 4px;
 }
 
 *,

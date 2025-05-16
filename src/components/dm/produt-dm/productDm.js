@@ -1,8 +1,6 @@
 import { LitElement } from 'lit'
 
 export class ProductDm extends LitElement {
-	host: string
-
 	static get properties() {
 		return {
 			host: { type: String },
@@ -14,7 +12,7 @@ export class ProductDm extends LitElement {
 		this.host = ''
 	}
 
-	public async getProduct() {
+	async getProduct() {
 		try {
 			const response = await fetch(this.host)
 

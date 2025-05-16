@@ -381,11 +381,6 @@ tinyglobby@^0.2.13:
     fdir "^6.4.4"
     picomatch "^4.0.2"
 
-typescript@~5.8.3:
-  version "5.8.3"
-  resolved "https://artifactory.globaldevtools.bbva.com/artifactory/api/npm/gl-bbva-npm-virtual/typescript/-/typescript-5.8.3.tgz#92f8a3e5e3cf497356f4178c34cd65a7f5e8440e"
-  integrity sha512-p1diW6TqL9L07nNxvRMM7hMMw4c5XOo/1ibL4aAIGmSAt9slTE1Xgw5KWuof2uTOvCg9BY7ZRi+GaF+7sfgPeQ==
-
 vite@^6.3.5:
   version "6.3.5"
   resolved "https://artifactory.globaldevtools.bbva.com/artifactory/api/npm/gl-bbva-npm-virtual/vite/-/vite-6.3.5.tgz#fec73879013c9c0128c8d284504c6d19410d12a3"

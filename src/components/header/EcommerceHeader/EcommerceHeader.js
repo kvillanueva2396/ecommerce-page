@@ -1,9 +1,9 @@
 import { LitElement, html, css } from 'lit'
-import { EcommerceMobileMenu } from './EcommerceMobileMenu.ts'
+import { EcommerceButtonCart } from '../EcommerceButtonCart/EcommerceButtonCart.js'
+import { EcommerceMobileMenu } from '../EcommerceMobileMenu/EcommerceMobileMenu.js'
+import styles from './EcommerceHeader.css.js'
 
 export class EcommerceHeader extends LitElement {
-	_isMobileMenuOpen: boolean
-
 	static get properties() {
 		return {
 			_isMobileMenuOpen: { type: Boolean, attribute: 'is-mobile-menu-open' },
@@ -15,37 +15,15 @@ export class EcommerceHeader extends LitElement {
 		this._isMobileMenuOpen = false
 	}
 
-	static styles = css`
-		.ecommerce-header {
-			display: flex;
-			justify-content: space-between;
-			padding: 1rem 1.5rem;
-			position: relative;
-		}
-		.ecommerce-header-left {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			gap: 1rem;
-		}
-		.ecommerce-header-right {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			gap: 1.5rem;
-		}
-		.ecommerce-header__avatar {
-			border-radius: 50%;
-			width: 2rem;
-			height: 2rem;
-		}
-	`
+	static get styles() {
+		return [styles]
+	}
 
 	_handleMenuClick() {
 		this._isMobileMenuOpen = !this._isMobileMenuOpen
 	}
 
-	_handleMenuButtonClose(event: CustomEvent) {
+	_handleMenuButtonClose(event) {
 		this._isMobileMenuOpen = event.detail.isOpen
 	}
 
@@ -55,9 +33,17 @@ export class EcommerceHeader extends LitElement {
 				<div class="ecommerce-header-left">
 					<ecommerce-mobile-menu></ecommerce-mobile-menu>
 					<img src="/logo.svg" alt="logo" class="ecommerce-header-logo" />
+					<ul class="ecommerce-header-list">
+						<li class="ecommerce-header-list__item">Collections</li>
+						<li class="ecommerce-header-list__item">Men</li>
+						<li class="ecommerce-header-list__item">Women</li>
+						<li class="ecommerce-header-list__item">About</li>
+						<li class="ecommerce-header-list__item">Contact</li>
+					</ul>
 				</div>
 				<div class="ecommerce-header-right">
-					<img src="/icon-cart.svg" alt="icon cart" />
+					<!-- <img src="/icon-cart.svg" alt="icon cart" class="ecommerce-header__cart" /> -->
+					<ecommerce-button-cart></ecommerce-button-cart>
 					<img src="/image-avatar.png" alt="avatar" class="ecommerce-header__avatar" />
 				</div>
 			</header>
