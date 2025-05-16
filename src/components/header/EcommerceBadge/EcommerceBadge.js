@@ -4,7 +4,7 @@ import styles from './EcommerceBadge.css'
 export class EcommerceBadge extends LitElement {
 	static get properties() {
 		return {
-			quantity: { type: Number },
+			quantity: { type: Number, attribute: 'quantity' },
 		}
 	}
 

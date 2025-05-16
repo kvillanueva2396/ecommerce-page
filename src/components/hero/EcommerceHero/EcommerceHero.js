@@ -18,10 +18,24 @@ export class EcommerceHero extends LitElement {
 		return this.product.images
 	}
 
+	_handleGetProductToBasket(event) {
+		const productWithQuantityToBasket = event.detail
+		this.dispatchEvent(
+			new CustomEvent('on-get-product-to-basket', {
+				detail: productWithQuantityToBasket,
+				bubbles: true,
+				composed: true,
+			})
+		)
+	}
+
 	render() {
 		return html`<div>
 			<ecommerce-mobile-carousel .images=${this._getProductImages}></ecommerce-mobile-carousel>
-			<ecommerce-product-info .product=${this.product}></ecommerce-product-info>
+			<ecommerce-product-info
+				.product=${this.product}
+				@on-get-product-to-basket=${this._handleGetProductToBasket}
+			></ecommerce-product-info>
 		</div>`
 	}
 }

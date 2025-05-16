@@ -6,13 +6,13 @@ import styles from './EcommerceHeader.css.js'
 export class EcommerceHeader extends LitElement {
 	static get properties() {
 		return {
-			productsSelected: { type: Array, attribute: 'products-selected' },
+			productSelected: { type: Object },
 		}
 	}
 
 	constructor() {
 		super()
-		this.productsSelected = []
+		this.productSelected = {}
 	}
 
 	static get styles() {
@@ -34,10 +34,7 @@ export class EcommerceHeader extends LitElement {
 					</ul>
 				</div>
 				<div class="ecommerce-header-right">
-					<!-- <img src="/icon-cart.svg" alt="icon cart" class="ecommerce-header__cart" /> -->
-					<ecommerce-button-cart
-						.products-selected=${this.productsSelected}
-					></ecommerce-button-cart>
+					<ecommerce-button-cart .productSelected=${this.productSelected}></ecommerce-button-cart>
 					<img src="/image-avatar.png" alt="avatar" class="ecommerce-header__avatar" />
 				</div>
 			</header>

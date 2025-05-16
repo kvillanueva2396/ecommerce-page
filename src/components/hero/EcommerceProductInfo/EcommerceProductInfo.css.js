@@ -10,6 +10,9 @@ const styles = css`
 			margin: 0;
 		}
 	}
+	.product-info {
+		padding: 20px;
+	}
 
 	.product-info__company {
 		color: var(--dark-grayish-blue);
@@ -31,6 +34,8 @@ const styles = css`
 	.prices-wrapper {
 		display: flex;
 		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 10px;
 	}
 
 	.new-price-wrapper {
@@ -50,12 +55,17 @@ const styles = css`
 		font-weight: 700;
 		padding: 2px 10px;
 		border-radius: 10px;
+		font-size: 14px;
 	}
 
 	.price {
 		text-decoration-line: line-through;
 		color: var(--dark-grayish-blue);
 		font-weight: 700;
+	}
+
+	.icon {
+		filter: grayscale(100%) brightness(0%);
 	}
 `
 

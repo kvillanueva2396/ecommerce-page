@@ -6,14 +6,14 @@ import styles from './EcommerceButtonCart.css'
 export class EcommerceButtonCart extends LitElement {
 	static get properties() {
 		return {
-			productsSelected: { type: Array, attribute: 'products-selected' },
+			productSelected: { type: Object },
 			_isBasketOpen: { type: Boolean, attribute: 'is-basket-open' },
 		}
 	}
 
 	constructor() {
 		super()
-		this.productsSelected = []
+		this.productSelected = {}
 		this._isBasketOpen = false
 	}
 
@@ -22,8 +22,8 @@ export class EcommerceButtonCart extends LitElement {
 	}
 
 	get _getBadge() {
-		return this.productsSelected.length > 0
-			? html`<ecommerce-badge quantity=${this.products.length}></ecommerce-badge>`
+		return this.productSelected.quantity > 0
+			? html`<ecommerce-badge .quantity=${this.productSelected.quantity}></ecommerce-badge>`
 			: null
 	}
 
@@ -38,7 +38,7 @@ export class EcommerceButtonCart extends LitElement {
 				${this._getBadge}
 			</button>
 			<ecommerce-basket
-				.products-selected=${this.productsSelected}
+				.products-selected=${this.productSelected}
 				?is-basket-open=${this._isBasketOpen}
 			></ecommerce-basket>
 		`

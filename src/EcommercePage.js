@@ -7,14 +7,17 @@ import styles from './EcommercePage.css.js'
 export class EcommercePage extends LitElement {
 	static get properties() {
 		return {
-			_product: { type: Object, attribute: 'product' },
+			_host: { type: String, state: true },
+			_product: { type: Object, state: true },
+			_productSelected: { type: Object, state: true },
 		}
 	}
 
 	constructor() {
 		super()
-		this._host = 'https://api.escuelajs.co/api/v1/products/34'
+		this._host = 'https://api.escuelajs.co/api/v1/products/4'
 		this._product = {}
+		this._productSelected = {}
 	}
 
 	async firstUpdated() {
@@ -23,8 +26,6 @@ export class EcommercePage extends LitElement {
 		productDm.host = this._host
 		productDm.getProduct()
 		productDm.addEventListener('on-get-product-data', event => {
-			console.log(event.detail)
-
 			this._product = event.detail
 		})
 	}
@@ -37,12 +38,19 @@ export class EcommercePage extends LitElement {
 		return [styles]
 	}
 
+	_handleGetProductToBasket(event) {
+		this._productSelected = event.detail
+	}
+
 	render() {
 		return html` <div class="ecommerce-page">
 			${this._getRenderDm}
-			<ecommerce-header></ecommerce-header>
+			<ecommerce-header .productSelected=${this._productSelected}></ecommerce-header>
 			<hr class="separator" />
-			<ecommerce-hero .product=${this._product}></ecommerce-hero>
+			<ecommerce-hero
+				.product=${this._product}
+				@on-get-product-to-basket=${this._handleGetProductToBasket}
+			></ecommerce-hero>
 		</div>`
 	}
 }
