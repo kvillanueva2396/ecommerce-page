@@ -21,7 +21,13 @@ export class ProductDm extends LitElement {
 			}
 
 			const data = await response.json()
-			console.log(data)
+			this.dispatchEvent(
+				new CustomEvent('on-get-product-data', {
+					detail: data,
+					bubbles: true,
+					composed: true,
+				})
+			)
 		} catch (error) {
 			console.error(error)
 		}

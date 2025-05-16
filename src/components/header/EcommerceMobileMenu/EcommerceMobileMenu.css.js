@@ -21,6 +21,7 @@ const styles = css`
 		width: auto;
 		height: 100vh;
 		padding: 1rem 1.5rem;
+		z-index: 99;
 	}
 	.ecommerce-mobile-menu--open {
 		transform: translateX(0);
@@ -35,6 +36,7 @@ const styles = css`
 		opacity: 0;
 		pointer-events: none;
 		transition: opacity 0.3s ease-in-out;
+		z-index: 99;
 	}
 
 	.overlay--visible {

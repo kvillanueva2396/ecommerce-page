@@ -5,8 +5,15 @@ import { classMap } from 'lit/directives/class-map.js'
 export class EcommerceBasket extends LitElement {
 	static get properties() {
 		return {
+			productsSelected: { type: Array, attribute: 'products-selected' },
 			isBasketOpen: { type: Boolean, attribute: 'is-basket-open' },
 		}
+	}
+
+	constructor() {
+		super()
+		this.productsSelected = []
+		this.isBasketOpen = false
 	}
 
 	static get styles() {

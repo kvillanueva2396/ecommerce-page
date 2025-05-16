@@ -4,6 +4,17 @@ import { EcommerceMobileMenu } from '../EcommerceMobileMenu/EcommerceMobileMenu.
 import styles from './EcommerceHeader.css.js'
 
 export class EcommerceHeader extends LitElement {
+	static get properties() {
+		return {
+			productsSelected: { type: Array, attribute: 'products-selected' },
+		}
+	}
+
+	constructor() {
+		super()
+		this.productsSelected = []
+	}
+
 	static get styles() {
 		return [styles]
 	}
@@ -24,7 +35,9 @@ export class EcommerceHeader extends LitElement {
 				</div>
 				<div class="ecommerce-header-right">
 					<!-- <img src="/icon-cart.svg" alt="icon cart" class="ecommerce-header__cart" /> -->
-					<ecommerce-button-cart></ecommerce-button-cart>
+					<ecommerce-button-cart
+						.products-selected=${this.productsSelected}
+					></ecommerce-button-cart>
 					<img src="/image-avatar.png" alt="avatar" class="ecommerce-header__avatar" />
 				</div>
 			</header>
