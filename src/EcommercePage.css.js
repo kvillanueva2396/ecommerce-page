@@ -10,6 +10,8 @@ const styles = css`
 		height: 1px;
 		background-color: var(--grayish-blue);
 		margin: var(--separator-margin) 0;
+		position: relative;
+		z-index: 0;
 	}
 
 	@media (max-width: 768px) {

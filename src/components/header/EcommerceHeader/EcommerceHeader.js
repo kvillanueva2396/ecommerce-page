@@ -4,27 +4,8 @@ import { EcommerceMobileMenu } from '../EcommerceMobileMenu/EcommerceMobileMenu.
 import styles from './EcommerceHeader.css.js'
 
 export class EcommerceHeader extends LitElement {
-	static get properties() {
-		return {
-			_isMobileMenuOpen: { type: Boolean, attribute: 'is-mobile-menu-open' },
-		}
-	}
-
-	constructor() {
-		super()
-		this._isMobileMenuOpen = false
-	}
-
 	static get styles() {
 		return [styles]
-	}
-
-	_handleMenuClick() {
-		this._isMobileMenuOpen = !this._isMobileMenuOpen
-	}
-
-	_handleMenuButtonClose(event) {
-		this._isMobileMenuOpen = event.detail.isOpen
 	}
 
 	render() {

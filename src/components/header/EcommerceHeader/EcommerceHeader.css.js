@@ -1,15 +1,18 @@
 import { css } from 'lit'
 
 const styles = css`
-	ecommerce-button-cart button {
-		background: yellowgreen;
+	:host {
+		box-sizing: border-box;
+		padding: 0;
+		margin: 0;
 	}
 	.ecommerce-header {
 		display: flex;
 		justify-content: space-between;
 		position: relative;
-		width: 100%;
+		width: auto;
 		height: 120px;
+		padding: 0;
 	}
 	.ecommerce-header-left {
 		display: flex;
@@ -64,6 +67,7 @@ const styles = css`
 	@media (max-width: 768px) {
 		.ecommerce-header {
 			height: 60px;
+			padding: 1rem 1.5rem;
 		}
 		.ecommerce-header-list {
 			display: none;
