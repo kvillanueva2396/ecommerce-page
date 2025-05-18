@@ -28,7 +28,7 @@ export class EcommerceProductInfo extends LitElement {
 		const quantity = productCounter.quantity
 		const productWithQuantityToBasket = {
 			quantity,
-			product: this.product,
+			data: this.product,
 		}
 		this.dispatchEvent(
 			new CustomEvent('on-get-product-to-basket', {

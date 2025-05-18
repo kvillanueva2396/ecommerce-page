@@ -17,6 +17,12 @@ const styles = css`
 		width: 30px;
 		height: 30px;
 	}
+	@media (max-width: 768px) {
+		.ecommerce-header-cart__icon {
+			width: 20px;
+			height: 20px;
+		}
+	}
 `
 
 export default styles

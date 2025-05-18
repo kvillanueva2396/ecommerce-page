@@ -12,7 +12,7 @@ const styles = css`
 		position: relative;
 		width: auto;
 		height: 120px;
-		padding: 0;
+		padding: 1rem 1.5rem;
 	}
 	.ecommerce-header-left {
 		display: flex;
@@ -67,10 +67,16 @@ const styles = css`
 	@media (max-width: 768px) {
 		.ecommerce-header {
 			height: 60px;
-			padding: 1rem 1.5rem;
 		}
 		.ecommerce-header-list {
 			display: none;
+		}
+		.ecommerce-header-right {
+			gap: 1rem;
+		}
+		.ecommerce-header__avatar {
+			width: 2rem;
+			height: 2rem;
 		}
 	}
 `

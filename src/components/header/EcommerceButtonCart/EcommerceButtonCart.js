@@ -38,7 +38,7 @@ export class EcommerceButtonCart extends LitElement {
 				${this._getBadge}
 			</button>
 			<ecommerce-basket
-				.products-selected=${this.productSelected}
+				.productSelected=${this.productSelected}
 				?is-basket-open=${this._isBasketOpen}
 			></ecommerce-basket>
 		`

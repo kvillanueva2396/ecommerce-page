@@ -1,4 +1,5 @@
 import { LitElement, html } from 'lit'
+import { EcommerceOverlay } from '../../common/EcommerceOverlay/EcommerceOverlay.js'
 import { classMap } from 'lit/directives/class-map.js'
 import styles from './EcommerceMobileMenu.css.js'
 
@@ -25,13 +26,6 @@ export class EcommerceMobileMenu extends LitElement {
 		}
 	}
 
-	get overlayClasses() {
-		return {
-			overlay: true,
-			'overlay--visible': this._isMobileMenuOpen,
-		}
-	}
-
 	_handleButtonClose() {
 		this._isMobileMenuOpen = false
 	}
@@ -45,7 +39,7 @@ export class EcommerceMobileMenu extends LitElement {
 			<button class="ecommerce-header__menu" @click=${this._handleMenuClick}>
 				<img src="/icon-menu.svg" alt="icon" />
 			</button>
-			<div class=${classMap(this.overlayClasses)}></div>
+			<ecommerce-overlay ?is-visible=${this._isMobileMenuOpen}></ecommerce-overlay>
 			<div class=${classMap(this.menuClasses)}>
 				<button @click=${this._handleButtonClose}>
 					<img src="/icon-close.svg" alt="icon close" />

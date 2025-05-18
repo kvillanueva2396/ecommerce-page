@@ -3,6 +3,14 @@ import { css } from 'lit'
 const styles = css`
 	:host {
 		font-family: var(--font-family-primary);
+
+		*,
+		::before,
+		::after {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
 	}
 	.ecommerce-basket {
 		position: absolute;
@@ -25,9 +33,10 @@ const styles = css`
 		font-weight: 700;
 	}
 	.ecommerce-basket__body {
-		padding: 80px 20px;
+		padding: 20px 20px 30px 20px;
 		display: flex;
-		justify-content: center;
+		width: 100%;
+		flex-direction: column;
 	}
 	.empty-text {
 		color: var(--dark-grayish-blue);
