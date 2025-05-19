@@ -15,7 +15,7 @@ export class EcommercePage extends LitElement {
 
 	constructor() {
 		super()
-		this._host = 'https://api.escuelajs.co/api/v1/products/34'
+		this._host = 'https://api.escuelajs.co/api/v1/products/10'
 		this._product = {}
 		this._productSelected = {}
 	}

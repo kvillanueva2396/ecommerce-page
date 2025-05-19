@@ -1,21 +1,33 @@
 import { html, LitElement } from 'lit'
-import { EcommerceMobileCarousel } from '../EcommerceMobileCarousel/EcommerceMobileCarousel'
+import { EcommerceCarousel } from '../EcommerceCarousel/EcommerceCarousel'
 import { EcommerceProductInfo } from '../EcommerceProductInfo/EcommerceProductInfo'
+import { EcommerceThumbnailBar } from '../EcommerceThumbnailBar/EcommerceThumbnailBar'
+import styles from './EcommerceHero.css'
 
 export class EcommerceHero extends LitElement {
 	static get properties() {
 		return {
 			product: { type: Object, attribute: 'product' },
+			_currentIndex: { type: Number },
 		}
 	}
 
 	constructor() {
 		super()
 		this.product = {}
+		this._currentIndex = 0
+	}
+
+	static get styles() {
+		return [styles]
 	}
 
 	get _getProductImages() {
 		return this.product.images
+	}
+
+	get _getCurrentImage() {
+		return this._getProductImages ? this.product.images[this._currentIndex] : null
 	}
 
 	_handleGetProductToBasket(event) {
@@ -29,14 +41,26 @@ export class EcommerceHero extends LitElement {
 		)
 	}
 
+	_handleClickBigImage() {
+		console.log('click big image')
+	}
+
 	render() {
-		return html`<div>
-			<ecommerce-mobile-carousel .images=${this._getProductImages}></ecommerce-mobile-carousel>
-			<ecommerce-product-info
-				.product=${this.product}
-				@on-get-product-to-basket=${this._handleGetProductToBasket}
-			></ecommerce-product-info>
-		</div>`
+		return html` <ecommerce-carousel .images=${this._getProductImages}></ecommerce-carousel>
+			<div class="ecommerce-hero">
+				<div class="hero-images">
+					<div class="big-image-wrapper" @click=${this._handleClickBigImage}>
+						<img class="big-image" src=${this._getCurrentImage} alt="product image" />
+					</div>
+					<ecommerce-thumbnail-bar .images=${this._getProductImages}></ecommerce-thumbnail-bar>
+				</div>
+				<div class="ecommerce-hero__product-info">
+					<ecommerce-product-info
+						.product=${this.product}
+						@on-get-product-to-basket=${this._handleGetProductToBasket}
+					></ecommerce-product-info>
+				</div>
+			</div>`
 	}
 }
 

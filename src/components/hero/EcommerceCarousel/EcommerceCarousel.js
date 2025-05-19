@@ -1,11 +1,12 @@
 import { html, LitElement } from 'lit'
 import { styleMap } from 'lit/directives/style-map.js'
-import styles from './EcommerceMobileCarousel.css'
+import styles from './EcommerceCarousel.css'
 
-export class EcommerceMobileCarousel extends LitElement {
+export class EcommerceCarousel extends LitElement {
 	static get properties() {
 		return {
 			images: { type: Array, attribute: 'images' },
+			isMobile: { type: Boolean, attribute: 'is-mobile' },
 			_currentIndex: { type: Number, state: true },
 		}
 	}
@@ -17,6 +18,7 @@ export class EcommerceMobileCarousel extends LitElement {
 	constructor() {
 		super()
 		this.images = []
+		this.isMobile = false
 		this._currentIndex = 0
 	}
 
@@ -61,4 +63,4 @@ export class EcommerceMobileCarousel extends LitElement {
 	}
 }
 
-customElements.define('ecommerce-mobile-carousel', EcommerceMobileCarousel)
+customElements.define('ecommerce-carousel', EcommerceCarousel)
