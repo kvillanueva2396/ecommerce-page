@@ -22,6 +22,13 @@ export class EcommerceThumbnail extends LitElement {
 
 	get _thumbnailClasses() {
 		return {
+			thumbnail: true,
+			'thumbnail--selected': this.isSelected,
+		}
+	}
+
+	get _thumbnailImageClasses() {
+		return {
 			thumbnail__image: true,
 			'thumbnail__image--selected': this.isSelected,
 		}
@@ -29,8 +36,12 @@ export class EcommerceThumbnail extends LitElement {
 
 	render() {
 		return html`
-			<span class="thumbnail">
-				<img class=${classMap(this._thumbnailClasses)} src=${this.thumbnailSrc} alt="thumbnail" />
+			<span class=${classMap(this._thumbnailClasses)}>
+				<img
+					class=${classMap(this._thumbnailImageClasses)}
+					src=${this.thumbnailSrc}
+					alt="thumbnail"
+				/>
 			</span>
 		`
 	}

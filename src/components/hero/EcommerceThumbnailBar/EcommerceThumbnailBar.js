@@ -39,7 +39,7 @@ export class EcommerceThumbnailBar extends LitElement {
 
 	render() {
 		return html`<ul class="thumbnail-bar-wrapper">
-			${this.images?.length > 0
+			${this.images?.length > 1
 				? this.images.map(
 						(thumbnailSrc, index) =>
 							html`<li>

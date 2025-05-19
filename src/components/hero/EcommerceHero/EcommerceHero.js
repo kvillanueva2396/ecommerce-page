@@ -51,6 +51,10 @@ export class EcommerceHero extends LitElement {
 		this._currentIndex = event.detail
 	}
 
+	_handleCloseLightbox() {
+		this._isLightboxOpen = false
+	}
+
 	render() {
 		return html` <div class="carousel">
 				<ecommerce-carousel .images=${this._getProductImages}></ecommerce-carousel>
@@ -58,6 +62,7 @@ export class EcommerceHero extends LitElement {
 			<ecommerce-lightbox
 				?is-open=${this._isLightboxOpen}
 				.images=${this._getProductImages}
+				@on-close-lightbox=${this._handleCloseLightbox}
 			></ecommerce-lightbox>
 			<div class="ecommerce-hero">
 				<div class="hero-images">

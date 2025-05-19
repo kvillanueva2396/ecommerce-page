@@ -2,38 +2,43 @@ import { css } from 'lit'
 
 const styles = css`
 	.thumbnail {
-		cursor: pointer;
-		position: relative;
-		overflow: hidden;
 		display: inline-block;
+		position: relative;
+		cursor: pointer;
+		width: 80px;
+		height: 80px;
+		border-radius: 15px;
 	}
-	.thumbnail--selected {
-		border-color: var(--orange);
-	}
+
 	.thumbnail::before {
 		content: '';
 		position: absolute;
-		top: 0;
-		left: 0;
+		top: 2px;
+		left: 2px;
 		width: 100%;
 		height: 100%;
 		background-color: white;
 		opacity: 0;
-		transition: opacity 0.3s ease-in-out;
+		border-radius: 15px;
+		pointer-events: none;
 	}
+
 	.thumbnail:hover::before {
 		opacity: 0.5;
 	}
+	.thumbnail--selected::before {
+		opacity: 0.5;
+	}
+
 	.thumbnail__image {
-		width: 80px;
-		height: 80px;
+		display: block;
+		width: 100%;
+		height: auto;
 		border-radius: 15px;
 		border: 2px solid transparent;
-		opacity: 1;
 	}
 	.thumbnail__image--selected {
 		border-color: var(--orange);
-		opacity: 0.5;
 	}
 `
 
