@@ -19,6 +19,9 @@ const styles = css`
 		justify-content: space-between;
 	}
 	.thumbnail {
+		cursor: pointer;
+	}
+	.thumbnail__image {
 		width: 80px;
 		height: 80px;
 		border-radius: 15px;

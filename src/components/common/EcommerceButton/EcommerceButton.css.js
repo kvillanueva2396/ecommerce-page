@@ -22,6 +22,10 @@ const styles = css`
 		height: auto;
 		padding: 14px 0;
 		border-radius: 10px;
+		cursor: pointer;
+	}
+	.ecommerce-button:hover {
+		background: var(--pale-orange);
 	}
 `
 
