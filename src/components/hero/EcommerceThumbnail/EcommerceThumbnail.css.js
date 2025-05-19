@@ -1,23 +1,6 @@
 import { css } from 'lit'
 
 const styles = css`
-	:host {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		flex-wrap: wrap;
-
-		ul {
-			list-style: none;
-			margin: 0;
-			padding: 0;
-		}
-	}
-	.thumbnail-bar-wrapper {
-		width: 100%;
-		display: flex;
-		justify-content: space-between;
-	}
 	.thumbnail {
 		cursor: pointer;
 		position: relative;
@@ -46,9 +29,11 @@ const styles = css`
 		height: 80px;
 		border-radius: 15px;
 		border: 2px solid transparent;
+		opacity: 1;
 	}
 	.thumbnail__image--selected {
 		border-color: var(--orange);
+		opacity: 0.5;
 	}
 `
 

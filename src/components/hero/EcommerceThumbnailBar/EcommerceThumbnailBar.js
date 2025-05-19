@@ -1,4 +1,5 @@
 import { html, LitElement } from 'lit'
+import { EcommerceThumbnail } from '../EcommerceThumbnail/EcommerceThumbnail'
 import styles from './EcommerceThumbnailBar.css'
 
 export class EcommerceThumbnailBar extends LitElement {
@@ -20,6 +21,7 @@ export class EcommerceThumbnailBar extends LitElement {
 	}
 
 	_handleClickThumbnail(currentIndex) {
+		this._currentIndex = currentIndex
 		this.dispatchEvent(
 			new CustomEvent('on-get-current-index', {
 				detail: currentIndex,
@@ -29,13 +31,23 @@ export class EcommerceThumbnailBar extends LitElement {
 		)
 	}
 
+	get _thumbnailClasses() {
+		return {
+			thumbnail: true,
+		}
+	}
+
 	render() {
 		return html`<ul class="thumbnail-bar-wrapper">
 			${this.images?.length > 0
 				? this.images.map(
-						(thumbnail, index) =>
-							html`<li class="thumbnail" @click=${() => this._handleClickThumbnail(index)}>
-								<img class="thumbnail__image" src=${thumbnail} alt="thumbnail" />
+						(thumbnailSrc, index) =>
+							html`<li>
+								<ecommerce-thumbnail
+									.thumbnailSrc=${thumbnailSrc}
+									?is-selected=${this._currentIndex === index}
+									@click=${() => this._handleClickThumbnail(index)}
+								></ecommerce-thumbnail>
 							</li>`
 				  )
 				: ''}
