@@ -21,7 +21,9 @@ export class EcommerceOverlay extends LitElement {
 	}
 
 	render() {
-		return html`<div class=${classMap(this.overlayClasses)}></div>`
+		return html`<div class=${classMap(this.overlayClasses)}>
+			<slot></slot>
+		</div>`
 	}
 }
 

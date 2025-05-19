@@ -52,8 +52,13 @@ export class EcommerceHero extends LitElement {
 	}
 
 	render() {
-		return html` <ecommerce-carousel .images=${this._getProductImages}></ecommerce-carousel>
-			<ecommerce-lightbox ?is-open=${this._isLightboxOpen}></ecommerce-lightbox>
+		return html` <div class="carousel">
+				<ecommerce-carousel .images=${this._getProductImages}></ecommerce-carousel>
+			</div>
+			<ecommerce-lightbox
+				?is-open=${this._isLightboxOpen}
+				.images=${this._getProductImages}
+			></ecommerce-lightbox>
 			<div class="ecommerce-hero">
 				<div class="hero-images">
 					<div class="big-image-wrapper" @click=${this._handleClickBigImage}>

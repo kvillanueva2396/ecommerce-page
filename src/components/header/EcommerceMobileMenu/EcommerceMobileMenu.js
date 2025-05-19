@@ -39,19 +39,20 @@ export class EcommerceMobileMenu extends LitElement {
 			<button class="ecommerce-header__menu" @click=${this._handleMenuClick}>
 				<img src="/icon-menu.svg" alt="icon" />
 			</button>
-			<ecommerce-overlay ?is-visible=${this._isMobileMenuOpen}></ecommerce-overlay>
-			<div class=${classMap(this.menuClasses)}>
-				<button @click=${this._handleButtonClose}>
-					<img src="/icon-close.svg" alt="icon close" />
-				</button>
-				<ul class="menu-list">
-					<li>Collections</li>
-					<li>Men</li>
-					<li>Women</li>
-					<li>About</li>
-					<li>Contact</li>
-				</ul>
-			</div>
+			<ecommerce-overlay ?is-visible=${this._isMobileMenuOpen}>
+				<div class=${classMap(this.menuClasses)}>
+					<button @click=${this._handleButtonClose}>
+						<img src="/icon-close.svg" alt="icon close" />
+					</button>
+					<ul class="menu-list">
+						<li>Collections</li>
+						<li>Men</li>
+						<li>Women</li>
+						<li>About</li>
+						<li>Contact</li>
+					</ul>
+				</div>
+			</ecommerce-overlay>
 		`
 	}
 }

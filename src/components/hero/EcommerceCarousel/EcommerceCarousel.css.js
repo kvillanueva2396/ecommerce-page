@@ -7,12 +7,6 @@ const styles = css`
 		overflow: hidden;
 	}
 
-	@media (min-width: 768px) {
-		:host {
-			display: none;
-		}
-	}
-
 	.carousel-wrapper {
 		display: flex;
 		transition: transform 0.5s ease-in-out;
