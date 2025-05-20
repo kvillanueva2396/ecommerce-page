@@ -19,6 +19,18 @@ export class EcommerceHeader extends LitElement {
 		return [styles]
 	}
 
+	_handleDeteleProduct(event) {
+		this.productSelected = {}
+		const product = event.detail
+		this.dispatchEvent(
+			new CustomEvent('on-delete-product', {
+				detail: product,
+				bubbles: true,
+				composed: true,
+			})
+		)
+	}
+
 	render() {
 		return html`
 			<header class="ecommerce-header">
@@ -34,7 +46,10 @@ export class EcommerceHeader extends LitElement {
 					</ul>
 				</div>
 				<div class="ecommerce-header-right">
-					<ecommerce-button-cart .productSelected=${this.productSelected}></ecommerce-button-cart>
+					<ecommerce-button-cart
+						.productSelected=${this.productSelected}
+						@on-delete-product=${this._handleDeteleProduct}
+					></ecommerce-button-cart>
 					<img src="/image-avatar.png" alt="avatar" class="ecommerce-header__avatar" />
 				</div>
 			</header>

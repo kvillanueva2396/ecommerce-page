@@ -35,6 +35,16 @@ export class EcommerceBasketItem extends LitElement {
 		}
 	}
 
+	_handleDeleteProduct() {
+		this.dispatchEvent(
+			new CustomEvent('on-delete-product', {
+				detail: this.product,
+				bubbles: true,
+				composed: true,
+			})
+		)
+	}
+
 	render() {
 		return html` <div class="basket-item-data-wrapper">
 				<img class="basket-item__thumbnail" src=${this._getThumbnail} alt="thumbnail" />
@@ -43,7 +53,7 @@ export class EcommerceBasketItem extends LitElement {
 					${this._getTotalPrice}
 				</div>
 			</div>
-			<button class="delete-button">
+			<button class="delete-button" @click=${this._handleDeleteProduct}>
 				<img src="/icon-delete.svg" alt="delete icon" />
 			</button>`
 	}

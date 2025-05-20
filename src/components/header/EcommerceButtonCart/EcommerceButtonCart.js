@@ -31,6 +31,18 @@ export class EcommerceButtonCart extends LitElement {
 		this._isBasketOpen = !this._isBasketOpen
 	}
 
+	_handleDeleteItem(event) {
+		this.productSelected = {}
+		const product = event.detail
+		this.dispatchEvent(
+			new CustomEvent('on-delete-product', {
+				detail: product,
+				bubbles: true,
+				composed: true,
+			})
+		)
+	}
+
 	render() {
 		return html`
 			<button class="ecommerce-button-cart" @click=${this._handleCartClick}>
@@ -40,6 +52,7 @@ export class EcommerceButtonCart extends LitElement {
 			<ecommerce-basket
 				.productSelected=${this.productSelected}
 				?is-basket-open=${this._isBasketOpen}
+				@on-delete-product=${this._handleDeleteItem}
 			></ecommerce-basket>
 		`
 	}

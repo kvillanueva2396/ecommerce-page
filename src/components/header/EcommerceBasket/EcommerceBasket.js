@@ -30,11 +30,26 @@ export class EcommerceBasket extends LitElement {
 		}
 	}
 
+	_handleDeleteProduct(event) {
+		this.productSelected = {}
+		const product = event.detail
+		this.dispatchEvent(
+			new CustomEvent('on-delete-product', {
+				detail: product,
+				bubbles: true,
+				composed: true,
+			})
+		)
+	}
+
 	get _getProducts() {
 		return isEmptyObject(this.productSelected)
 			? html`<p class="empty-text">Your cart is empty.</p>`
 			: html`
-					<ecommerce-basket-item .product=${this.productSelected}></ecommerce-basket-item
+					<ecommerce-basket-item
+						.product=${this.productSelected}
+						@on-delete-product=${this._handleDeleteProduct}
+					></ecommerce-basket-item
 					><ecommerce-button>Checkout</ecommerce-button>
 			  `
 	}

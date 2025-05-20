@@ -32,6 +32,7 @@ const styles = css`
 		border: none;
 		background: none;
 		padding: 0;
+		cursor: pointer;
 	}
 	.total-price {
 		color: #000;

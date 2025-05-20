@@ -58,6 +58,11 @@ export class EcommercePage extends LitElement {
 		console.log(this._productSelected)
 	}
 
+	_handleDeleteProduct(event) {
+		console.log('deleted productId: ', event.detail.id)
+		this._productSelected = {}
+	}
+
 	render() {
 		return html` <div class="ecommerce-page">
 			${this._getRenderDm}

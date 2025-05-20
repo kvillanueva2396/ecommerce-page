@@ -23,7 +23,7 @@ export class EcommerceProductInfo extends LitElement {
 		return this.product.price / 2
 	}
 
-	_handleClick() {
+	_handleAddToCart() {
 		const productCounter = this.shadowRoot.getElementById('ecommerce-product-counter')
 		const quantity = productCounter.quantity
 		const productWithQuantityToBasket = {
@@ -37,6 +37,7 @@ export class EcommerceProductInfo extends LitElement {
 				composed: true,
 			})
 		)
+		productCounter.quantity = 0
 	}
 
 	render() {
@@ -59,7 +60,7 @@ export class EcommerceProductInfo extends LitElement {
 					></ecommerce-product-counter>
 				</div>
 				<div class="product-info__add-cart">
-					<ecommerce-button @click=${this._handleClick}>
+					<ecommerce-button @click=${this._handleAddToCart}>
 						<img class="icon" src="/icon-cart.svg" alt="icon cart" /> Add to cart
 					</ecommerce-button>
 				</div>
