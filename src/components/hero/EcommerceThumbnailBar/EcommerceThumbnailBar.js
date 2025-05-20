@@ -6,14 +6,14 @@ export class EcommerceThumbnailBar extends LitElement {
 	static get properties() {
 		return {
 			images: { type: Array },
-			_currentIndex: { type: Number, state: true },
+			currentIndex: { type: Number },
 		}
 	}
 
 	constructor() {
 		super()
 		this.images = []
-		this._currentIndex = 0
+		this.currentIndex = 0
 	}
 
 	static get styles() {
@@ -21,7 +21,7 @@ export class EcommerceThumbnailBar extends LitElement {
 	}
 
 	_handleClickThumbnail(currentIndex) {
-		this._currentIndex = currentIndex
+		this.currentIndex = currentIndex
 		this.dispatchEvent(
 			new CustomEvent('on-get-current-index', {
 				detail: currentIndex,
@@ -45,7 +45,7 @@ export class EcommerceThumbnailBar extends LitElement {
 							html`<li>
 								<ecommerce-thumbnail
 									.thumbnailSrc=${thumbnailSrc}
-									?is-selected=${this._currentIndex === index}
+									?is-selected=${this.currentIndex === index}
 									@click=${() => this._handleClickThumbnail(index)}
 								></ecommerce-thumbnail>
 							</li>`

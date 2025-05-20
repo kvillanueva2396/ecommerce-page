@@ -30,12 +30,14 @@ export class ProductDm extends LitElement {
 			)
 		} catch (error) {
 			console.error(error)
+
+			this.dispatchEvent(new CustomEvent('on-get-error'), {
+				detail: error,
+				bubbles: true,
+				composed: true,
+			})
 		}
 	}
-
-	// firstUpdated() {
-	// 	this.getProduct()
-	// }
 }
 
 customElements.define('product-dm', ProductDm)

@@ -13,6 +13,12 @@ const styles = css`
 		position: relative;
 		z-index: 0;
 	}
+	.empty-product {
+		font-family: var(--font-family-primary);
+		font-weight: 700;
+		color: var(--dark-grayish-blue);
+		text-align: center;
+	}
 
 	@media (max-width: 768px) {
 		.separator {

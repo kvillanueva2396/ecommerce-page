@@ -1,5 +1,4 @@
 import { html, LitElement } from 'lit'
-import { styleMap } from 'lit/directives/style-map.js'
 import styles from './EcommerceCarousel.css'
 
 export class EcommerceCarousel extends LitElement {
@@ -7,7 +6,7 @@ export class EcommerceCarousel extends LitElement {
 		return {
 			images: { type: Array, attribute: 'images' },
 			isMobile: { type: Boolean, attribute: 'is-mobile' },
-			_currentIndex: { type: Number, state: true },
+			currentIndex: { type: Number },
 		}
 	}
 
@@ -19,13 +18,15 @@ export class EcommerceCarousel extends LitElement {
 		super()
 		this.images = []
 		this.isMobile = false
-		this._currentIndex = 0
+		this.currentIndex = 0
 	}
 
-	get _getImages() {
-		return this.images?.map(
-			imgSrc => html`<img class="carousel-image" src=${imgSrc} alt="image carousel" />`
-		)
+	get _getCurrentImage() {
+		return html`<img
+			class="carousel-image"
+			src=${this.images[this.currentIndex]}
+			alt="image carousel"
+		/>`
 	}
 
 	get _getNavButtons() {
@@ -41,23 +42,33 @@ export class EcommerceCarousel extends LitElement {
 			: null
 	}
 
-	get _getTranslateX() {
-		return `translateX(-${this._currentIndex * 100}%)`
+	_onGetCurrentIndex(currentIndex) {
+		this.dispatchEvent(
+			new CustomEvent('on-get-current-index', {
+				detail: currentIndex,
+				bubbles: true,
+				composed: true,
+			})
+		)
 	}
 
 	_handlePrev() {
-		this._currentIndex = Math.max(0, this._currentIndex - 1)
+		if (this.currentIndex > 0) {
+			this.currentIndex--
+			this._onGetCurrentIndex(this.currentIndex)
+		}
 	}
 
 	_handleNext() {
-		this._currentIndex = Math.min(this.images.length - 1, this._currentIndex + 1)
+		if (this.currentIndex < this.images.length - 1) {
+			this.currentIndex++
+			this._onGetCurrentIndex(this.currentIndex)
+		}
 	}
 
 	render() {
 		return html`
-			<div class="carousel-wrapper" style=${styleMap({ transform: this._getTranslateX })}>
-				${this._getImages}
-			</div>
+			<div class="carousel-wrapper">${this._getCurrentImage}</div>
 			${this._getNavButtons}
 		`
 	}

@@ -21,15 +21,16 @@ const styles = css`
 		flex-direction: column;
 		align-items: center;
 		width: 100%;
-		height: auto;
+		height: 100%;
 		justify-content: center;
 		max-width: 450px;
 		margin: 0 auto;
 	}
-	/* .lightbox__carousel {
-		width: 400px;
-		height: 400px;
-	} */
+
+	.lightbox__close-button {
+		margin-bottom: 10px;
+		align-self: end;
+	}
 
 	.lightbox__thumbnail-bar {
 		margin-top: 20px;

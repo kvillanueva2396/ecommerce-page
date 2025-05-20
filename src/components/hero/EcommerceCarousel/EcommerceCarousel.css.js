@@ -15,6 +15,7 @@ const styles = css`
 	.carousel-image {
 		width: 100%;
 		flex-shrink: 0;
+		border-radius: 15px;
 	}
 
 	.nav-button {

@@ -3,6 +3,7 @@ import { EcommerceHeader } from '../src/components/header'
 import { EcommerceHero } from './components/hero'
 import { ProductDm } from './components/dm/produt-dm/productDm'
 import styles from './EcommercePage.css.js'
+import { isEmptyObject } from './utils/object-utils.js'
 
 export class EcommercePage extends LitElement {
 	static get properties() {
@@ -10,14 +11,16 @@ export class EcommercePage extends LitElement {
 			_host: { type: String, state: true },
 			_product: { type: Object, state: true },
 			_productSelected: { type: Object, state: true },
+			_errorMessage: { type: String, state: true },
 		}
 	}
 
 	constructor() {
 		super()
-		this._host = 'https://api.escuelajs.co/api/v1/products/49'
+		this._host = 'https://api.escuelajs.co/api/v1/products/27'
 		this._product = {}
 		this._productSelected = {}
+		this._errorMessage = ''
 	}
 
 	async firstUpdated() {
@@ -28,10 +31,22 @@ export class EcommercePage extends LitElement {
 		productDm.addEventListener('on-get-product-data', event => {
 			this._product = event.detail
 		})
+		productDm.addEventListener('on-get-error', event => {
+			console.log(event)
+		})
 	}
 
 	get _getRenderDm() {
 		return html`<product-dm id="product-dm"></product-dm>`
+	}
+
+	get _getEcommerceHero() {
+		return !isEmptyObject(this._product)
+			? html`<ecommerce-hero
+					.product=${this._product}
+					@on-get-product-to-basket=${this._handleGetProductToBasket}
+			  ></ecommerce-hero>`
+			: html`<p class="empty-product">Product not founded</p>`
 	}
 
 	static get styles() {
@@ -48,10 +63,7 @@ export class EcommercePage extends LitElement {
 			${this._getRenderDm}
 			<ecommerce-header .productSelected=${this._productSelected}></ecommerce-header>
 			<hr class="separator" />
-			<ecommerce-hero
-				.product=${this._product}
-				@on-get-product-to-basket=${this._handleGetProductToBasket}
-			></ecommerce-hero>
+			${this._getEcommerceHero}
 		</div>`
 	}
 }
