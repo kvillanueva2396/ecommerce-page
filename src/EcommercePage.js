@@ -4,6 +4,7 @@ import { EcommerceHero } from './components/hero'
 import { ProductDm } from './components/dm/produt-dm/productDm'
 import styles from './EcommercePage.css.js'
 import { isEmptyObject } from './utils/object-utils.js'
+import { Constants } from './utils/constants'
 
 export class EcommercePage extends LitElement {
 	static get properties() {
@@ -34,6 +35,11 @@ export class EcommercePage extends LitElement {
 		productDm.addEventListener('on-get-error', event => {
 			console.log(event)
 		})
+		const productSelected = localStorage.getItem(Constants.PRODUCT_SELECTED)
+		if (productSelected) {
+			this._productSelected = JSON.parse(productSelected)
+			console.log(this._productSelected)
+		}
 	}
 
 	get _getRenderDm() {
@@ -56,17 +62,22 @@ export class EcommercePage extends LitElement {
 	_handleGetProductToBasket(event) {
 		this._productSelected = event.detail
 		console.log(this._productSelected)
+		localStorage.setItem(Constants.PRODUCT_SELECTED, JSON.stringify(this._productSelected))
 	}
 
 	_handleDeleteProduct(event) {
 		console.log('deleted productId: ', event.detail.id)
+		localStorage.removeItem(Constants.PRODUCT_SELECTED)
 		this._productSelected = {}
 	}
 
 	render() {
 		return html` <div class="ecommerce-page">
 			${this._getRenderDm}
-			<ecommerce-header .productSelected=${this._productSelected}></ecommerce-header>
+			<ecommerce-header
+				.productSelected=${this._productSelected}
+				@on-delete-product=${this._handleDeleteProduct}
+			></ecommerce-header>
 			<hr class="separator" />
 			${this._getEcommerceHero}
 		</div>`

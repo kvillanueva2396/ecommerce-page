@@ -19,8 +19,8 @@ export class EcommerceProductInfo extends LitElement {
 		return [styles]
 	}
 
-	get _getProductPriceWithDiscount() {
-		return this.product.price / 2
+	get _getProductPrice() {
+		return this.product.price
 	}
 
 	_handleAddToCart() {
@@ -47,10 +47,10 @@ export class EcommerceProductInfo extends LitElement {
 			<p class="product-info__description">${this.product.description}</p>
 			<div class="prices-wrapper">
 				<div class="new-price-wrapper">
-					<span class="new-price">$${this._getProductPriceWithDiscount.toFixed(2)}</span>
+					<span class="new-price">$${this._getProductPrice.toFixed(2)}</span>
 					<span class="discount">50%</span>
 				</div>
-				<span class="price">$${this.product.price?.toFixed(2)}</span>
+				<span class="price">$${this.product.price * 2}</span>
 			</div>
 			<div class="product-info__buttons">
 				<div class="product-info__counter">
