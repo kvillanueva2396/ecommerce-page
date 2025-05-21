@@ -36,10 +36,7 @@ export class EcommercePage extends LitElement {
 			console.log(event)
 		})
 		const productSelected = localStorage.getItem(Constants.PRODUCT_SELECTED)
-		if (productSelected) {
-			this._productSelected = JSON.parse(productSelected)
-			console.log(this._productSelected)
-		}
+		if (productSelected) this._productSelected = JSON.parse(productSelected)
 	}
 
 	get _getRenderDm() {
