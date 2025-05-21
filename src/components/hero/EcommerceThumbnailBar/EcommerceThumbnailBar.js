@@ -31,12 +31,6 @@ export class EcommerceThumbnailBar extends LitElement {
 		)
 	}
 
-	get _thumbnailClasses() {
-		return {
-			thumbnail: true,
-		}
-	}
-
 	render() {
 		return html`<ul class="thumbnail-bar-wrapper">
 			${this.images?.length > 1
