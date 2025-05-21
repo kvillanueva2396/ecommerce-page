@@ -41,6 +41,12 @@ const styles = css`
 	.nav-button--next {
 		right: 10px;
 	}
+
+	@media (max-width: 768px) {
+		.carousel-image {
+			border-radius: 0;
+		}
+	}
 `
 
 export default styles
